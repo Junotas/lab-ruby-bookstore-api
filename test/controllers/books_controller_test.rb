@@ -35,4 +35,14 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :no_content
   end
+  test "should not create book without title" do
+    # Attempt to create a book with missing title
+    assert_no_difference("Book.count") do
+      post books_url, params: { book: { author: "Unknown Author", genre: "Fiction", published_year: 2000 } }, as: :json
+    end
+  
+    # Expect an unprocessable entity response (422) since the title is missing
+    assert_response :unprocessable_entity
+  end
+  
 end
