@@ -20,6 +20,9 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+# hopefully fixes cors issues
+gem 'rack-cors', require: 'rack/cors'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
